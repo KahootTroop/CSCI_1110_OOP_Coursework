@@ -204,7 +204,7 @@ public class ObjFinal {
 								System.out.println("Name: " + nextRead.next());
 								System.out.println("Type: " + nextRead.next());
 								System.out.println("Color: " + nextRead.next());
-								System.out.println("Lifespan: " + nextRead.nextDouble());
+								System.out.println("Lifespan in years: " + nextRead.nextDouble());
 								System.out.println("Legs: " + nextRead.nextInt());
 								System.out.println("Arms: " + nextRead.nextInt());
 								System.out.println("Has a tail: " +  nextRead.next());
@@ -216,7 +216,7 @@ public class ObjFinal {
 								System.out.println("Name: " + nextRead.next());
 								System.out.println("Type: " + nextRead.next());
 								System.out.println("Color: " + nextRead.next());
-								System.out.println("Lifespan: " + nextRead.nextDouble());
+								System.out.println("Lifespan in years: " + nextRead.nextDouble());
 								System.out.println("Legs: " + nextRead.nextInt());
 								System.out.println("Arms: " + nextRead.nextInt());
 								System.out.println("Has a tail: " +  nextRead.next());
@@ -228,7 +228,7 @@ public class ObjFinal {
 								System.out.println("Name: " + nextRead.next());
 								System.out.println("Type: " + nextRead.next());
 								System.out.println("Color: " + nextRead.next());
-								System.out.println("Lifespan: " + nextRead.nextDouble());
+								System.out.println("Lifespan in years: " + nextRead.nextDouble());
 								System.out.println("Tail size in inches: " + nextRead.nextInt());
 								System.out.println("Number of fins: " + nextRead.nextInt());
 								System.out.println("Is a pet: " +  nextRead.next());
