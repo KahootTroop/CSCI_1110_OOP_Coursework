@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.IOException;
 import java.io.FileWriter;
-public class ObjFinal {
+public class Untitled {
 	public static void main(String[] args) throws FileNotFoundException, InputMismatchException, IOException {
 		Scanner user = new Scanner(System.in);
 		// add /Users/student/Desktop/ on front of path for stech mac
@@ -28,6 +28,7 @@ public class ObjFinal {
 		String[] strList = new String[10];
 		Reptile[] rList = new Reptile[10];
 		Fish[] fList = new Fish[10];
+		Bird[] bList = new Bird[10];
 		String color;
 		String name;
 		String size;
@@ -122,7 +123,7 @@ public class ObjFinal {
 					System.out.println("What is the animal's lifespan in years? ");
 					lifeSpan = user.nextDouble();
 					System.out.println("What is the size of the animal's tail in inches: ");
-					int tailSize = user.nextInt();
+					double tailSize = user.nextDouble();
 					System.out.println("How many fins does the animal have? ");
 					int fins = user.nextInt();
 					System.out.println("Is the animal a pet?");
@@ -135,6 +136,34 @@ public class ObjFinal {
 					}
 					fList[id] = new Fish(name, color, size, lifeSpan, tailSize, fins, isPet, id);
 					out.append(fList[id].toString() + "\n");
+					out.flush();
+					id++;
+				}
+				else if(userType.equalsIgnoreCase("bird")) {
+					System.out.println("What is the name of the animal? ");
+					name = user.next();
+					System.out.println("What color is the animal? ");
+					color = user.next();
+					System.out.println("What size is the animal? (Small, Medium, or Large)" );
+					size = user.next();
+					System.out.println("What is the animal's lifespan in years? ");
+					lifeSpan = user.nextDouble();
+					System.out.println("What is the size of the animal's tail in inches: ");
+					double tailSize = user.nextDouble();
+					System.out.println("What size of beak does the animal have in inches? ");
+					double beakSize = user.nextDouble();
+					System.out.println("What color of beak does the animal have? ");
+					String beakColor = user.next();
+					System.out.println("Is the animal a pet?");
+					boolean isPet = true;
+					if(user.next().equalsIgnoreCase("yes")) {
+						isPet = true;
+					}
+					else {
+						isPet = false;
+					}
+					bList[id] = new Bird(name, color, size, lifeSpan, tailSize, beakSize, beakColor, isPet, id);
+					out.append(bList[id].toString() + "\n");
 					out.flush();
 					id++;
 				}
@@ -229,8 +258,21 @@ public class ObjFinal {
 								System.out.println("Type: " + nextRead.next());
 								System.out.println("Color: " + nextRead.next());
 								System.out.println("Lifespan in years: " + nextRead.nextDouble());
-								System.out.println("Tail size in inches: " + nextRead.nextInt());
+								System.out.println("Tail size in inches: " + nextRead.nextDouble());
 								System.out.println("Number of fins: " + nextRead.nextInt());
+								System.out.println("Is a pet: " +  nextRead.next());
+							}
+							else if(typeFound.equals("B")) {
+								System.out.println("Id: " + nextRead.nextInt());
+								nextRead.next();
+								System.out.println("Name: " + nextRead.next());
+								System.out.println("Type: " + nextRead.next());
+								System.out.println("Color: " + nextRead.next());
+								System.out.println("Lifespan in years: " + nextRead.nextDouble());
+								System.out.println("Animals size: " + nextRead.next());
+								System.out.println("Tail size in inches: " + nextRead.nextDouble());
+								System.out.println("Beak size in inches: " + nextRead.nextDouble());
+								System.out.println("Beak color: " + nextRead.next());
 								System.out.println("Is a pet: " +  nextRead.next());
 							}
 							wrong = 1;
@@ -330,10 +372,10 @@ class Reptile extends Animal{
 	}
 }
 class Fish extends Animal{
-	int tailSize = 0;
+	double tailSize = 0;
 	int finCount = 0;
 	boolean isPet = true;
-	Fish(String newName, String newColor, String newSize, double newLifeSpan, int newTailSize, int newFinCount, boolean newIsPet, int newId) {
+	Fish(String newName, String newColor, String newSize, double newLifeSpan, double newTailSize, int newFinCount, boolean newIsPet, int newId) {
 			type = "Fish";
 			name = newName;
 			size = newSize;
@@ -354,13 +396,54 @@ class Fish extends Animal{
 			return ("ID: " + id + "\nName: " + name + "\nType: " + type + "\nColor: " + color + "\nLifeSpan: " + lifeSpan + "\nTail Size: " + tailSize + "\nFin Count: " + finCount + "\nIs Pet: " + isPet);
 		}
 }
-class Bird extends Animal{
+class Bird extends Animal {
+	double tailSize = 0;
+	boolean isPet = true;
+	double beakSize = 0.0;
+	String beakColor = "black";
+	Bird(String newName, String newColor, String newSize, double newLifeSpan, double newTailSize, double newBeakSize, String newBeakColor, boolean newIsPet, int newId) {
+		type = "Bird";
+		name = newName;
+		size = newSize;
+		lifeSpan = newLifeSpan;
+		tailSize = newTailSize;
+		beakSize = newBeakSize;
+		isPet = newIsPet;
+		color = newColor;
+		beakColor = newBeakColor; 
+		id = newId;
+	}
 	String getType() {
 		return "Bird";
 	}
+	public String toString() {
+		return (id + " B " + name + " " + type + " " + color + " " + lifeSpan + " " + size + " " + tailSize + " " + beakSize + " " + beakColor + " " + isPet);
+	}
+	public String toOutput(int id, String name, String type, String color, double lifeSpan, int tailSize, int finCount, boolean isPet) {
+		return ("ID: " + id + "\nName: " + name + "\nType: " + type + "\nColor: " + color + "\nLifeSpan: " + lifeSpan + "\nTail Size: " + tailSize + "\nBeak Size: " + beakSize + "\nBeak Color: " + beakColor + "\nIs Pet: " + isPet);
+	}
 }
 class Amphibian extends Animal{
+	boolean isPet = true;
+	String primaryEnv = "Land";
+	Fish(String newName, String newColor, String newSize, double newLifeSpan, boolean newHasTail, String newPrimaryEnv, boolean newIsPet, int newId) {
+		type = "Amphibian";
+		name = newName;
+		size = newSize;
+		lifeSpan = newLifeSpan;
+		hasTail = newHasTail;
+		primaryEnv = newPrimaryEnv;
+		isPet = newIsPet;
+		color = newColor;
+		id = newId;
+	}
 	String getType() {
 		return "Amphibian";
+	}
+	public String toString() {
+		return (id + " F " + name + " " + type + " " + color + " " + lifeSpan + " " + tailSize + " " + finCount + " " + isPet);
+	}
+	public String toOutput(int id, String name, String type, String color, double lifeSpan, int tailSize, int finCount, boolean isPet) {
+		return ("ID: " + id + "\nName: " + name + "\nType: " + type + "\nColor: " + color + "\nLifeSpan: " + lifeSpan + "\nTail Size: " + tailSize + "\nFin Count: " + finCount + "\nIs Pet: " + isPet);
 	}
 }
