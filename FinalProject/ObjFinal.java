@@ -275,6 +275,19 @@ public class Untitled {
 								System.out.println("Beak color: " + nextRead.next());
 								System.out.println("Is a pet: " +  nextRead.next());
 							}
+							else if(typeFound.equals("A")) {
+								System.out.println("Id: " + nextRead.nextInt());
+								nextRead.next();
+								System.out.println("Name: " + nextRead.next());
+								System.out.println("Type: " + nextRead.next());
+								System.out.println("Color: " + nextRead.next());
+								System.out.println("Lifespan in years: " + nextRead.nextDouble());
+								System.out.println("Animals size: " + nextRead.next());
+								System.out.println("hasTail: " + nextRead.nextBoolean());
+								System.out.println("Primary Enviroment: " + nextRead.next());
+								System.out.println("Is a pet: " +  nextRead.next());
+							}
+							//(id + " A " + name + " " + type + " " + color + " " + lifeSpan + " " + size +  " " + hasTail + " " + primaryEnv + " " + isPet);
 							wrong = 1;
 						}
 					}
@@ -426,7 +439,7 @@ class Bird extends Animal {
 class Amphibian extends Animal{
 	boolean isPet = true;
 	String primaryEnv = "Land";
-	Fish(String newName, String newColor, String newSize, double newLifeSpan, boolean newHasTail, String newPrimaryEnv, boolean newIsPet, int newId) {
+	Amphibian(String newName, String newColor, String newSize, double newLifeSpan, boolean newHasTail, String newPrimaryEnv, boolean newIsPet, int newId) {
 		type = "Amphibian";
 		name = newName;
 		size = newSize;
@@ -441,9 +454,9 @@ class Amphibian extends Animal{
 		return "Amphibian";
 	}
 	public String toString() {
-		return (id + " F " + name + " " + type + " " + color + " " + lifeSpan + " " + tailSize + " " + finCount + " " + isPet);
+		return (id + " A " + name + " " + type + " " + color + " " + lifeSpan + " " + size +  " " + hasTail + " " + primaryEnv + " " + isPet);
 	}
 	public String toOutput(int id, String name, String type, String color, double lifeSpan, int tailSize, int finCount, boolean isPet) {
-		return ("ID: " + id + "\nName: " + name + "\nType: " + type + "\nColor: " + color + "\nLifeSpan: " + lifeSpan + "\nTail Size: " + tailSize + "\nFin Count: " + finCount + "\nIs Pet: " + isPet);
+		return ("ID: " + id + "\nName: " + name + "\nType: " + type + "\nColor: " + color + "\nLifeSpan: " + lifeSpan + "\nSize: " + size + "\nHas Tail: " + hasTail + "\nPrimary enviroment: " + primaryEnv + "\nIs Pet: " + isPet);
 	}
 }
