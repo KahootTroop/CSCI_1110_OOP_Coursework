@@ -5,10 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.IOException;
 import java.io.FileWriter;
-public class Untitled {
+public class ObjFinal {
 	public static void main(String[] args) throws FileNotFoundException, InputMismatchException, IOException {
 		Scanner user = new Scanner(System.in);
-		// add /Users/student/Desktop/ on front of path for stech mac
 		File save = new File("/Users/student/Desktop/save.txt");
 		int idCount = 0;
 		if(save.exists()) {
@@ -25,14 +24,13 @@ public class Untitled {
 		Scanner file = new Scanner(save);
 		PrintWriter out = new PrintWriter(new FileWriter(save, true));
 		Mammal[] mList = new Mammal[10];
-		String[] strList = new String[10];
 		Reptile[] rList = new Reptile[10];
 		Fish[] fList = new Fish[10];
 		Bird[] bList = new Bird[10];
+		Amphibian[] aList = new Amphibian[10];
 		String color;
 		String name;
 		String size;
-		String trashcan;
 		double lifeSpan;
 		int legs;
 		int arms;
@@ -167,6 +165,37 @@ public class Untitled {
 					out.flush();
 					id++;
 				}
+				else if(userType.equalsIgnoreCase("amphibian")) {
+					System.out.println("What is the name of the animal? ");
+					name = user.next();
+					System.out.println("What color is the animal? ");
+					color = user.next();
+					System.out.println("What size is the animal? (Small, Medium, or Large)" );
+					size = user.next();
+					System.out.println("What is the animal's lifespan in years? ");
+					lifeSpan = user.nextDouble();
+					System.out.println("Does the animal have a tail?");
+					if(user.next().equalsIgnoreCase("yes")) {
+						hasTail = true;
+					}
+					else {
+						hasTail = false;
+					}
+					System.out.println("What is the animal's primary enviroment? ");
+					String primaryEnv = user.next();
+					System.out.println("Is the animal a pet?");
+					boolean isPet = true;
+					if(user.next().equalsIgnoreCase("yes")) {
+						isPet = true;
+					}
+					else {
+						isPet = false;
+					}
+					aList[id] = new Amphibian(name, color, size, lifeSpan, hasTail, primaryEnv, isPet, id);
+					out.append(aList[id].toString() + "\n");
+					out.flush();
+					id++;
+				}
 			}
 			else if(str.equalsIgnoreCase("no")) {
 				System.out.println("End Program? ");
@@ -207,19 +236,12 @@ public class Untitled {
 							pass = 1;
 						}
 						catch(InputMismatchException ex) {
-							String caught = user.next();
+							user.next();
 							System.out.println("Please enter only whole numbers...");
 						}
 					}
-					int currentTotal = 0;
-					Scanner file2 = new Scanner(save);
-					while(file2.hasNextLine()) {
-						file2.nextLine();
-						currentTotal++;
-					}
 					Scanner file3 = new Scanner(save);
 					System.out.println(viewId);
-					String outputLine;
 					while(file3.hasNext()) {
 						String theNextLine = file3.nextLine();
 						Scanner nextRead = new Scanner(theNextLine);
@@ -287,7 +309,6 @@ public class Untitled {
 								System.out.println("Primary Enviroment: " + nextRead.next());
 								System.out.println("Is a pet: " +  nextRead.next());
 							}
-							//(id + " A " + name + " " + type + " " + color + " " + lifeSpan + " " + size +  " " + hasTail + " " + primaryEnv + " " + isPet);
 							wrong = 1;
 						}
 					}
