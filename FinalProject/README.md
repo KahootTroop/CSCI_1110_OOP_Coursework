@@ -9,7 +9,7 @@ This was created to demonstrate the use of classes in creating objects as well a
 ## How to use
 When the program is run you will be prompted to enter an animal. Once an animal is entered it is saved in a file on your desktop. When the program is stopped
 the save file keeps all of the data safe. When the program is run again you can look at previous entries by having the program retreive the data about them. 
-<img src="FinalProject/ss.png" />
+<img src="https://raw.githubusercontent.com/KahootTroop/CSCI_1110_OOP_Coursework/master/FinalProject/ss.png" />
 
 ## Code Example
 This part of the code is how the program finds and displays data about a Mammal entry
